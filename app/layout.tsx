@@ -5,23 +5,26 @@ import {
   SignInButton,
   SignedIn,
   SignedOut,
-  UserButton
-} from '@clerk/nextjs'
-import './globals.css'
+  UserButton,
+} from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+
+import { ThemeProvider } from "@/components/theme-provider";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "A2G International Video",
   description: "In-House Video Receiving App",
 };
 
-
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en">
         <body>
           {/* <SignedOut>
@@ -30,9 +33,15 @@ export default function RootLayout({
           <SignedIn>
             <UserButton />
           </SignedIn>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            forcedTheme="dark"
+            storageKey="a2g-theme"
+          >
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }
