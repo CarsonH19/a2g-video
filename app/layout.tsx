@@ -35,7 +35,8 @@ export default function RootLayout({
           </SignedIn>
           <ThemeProvider
             attribute="class"
-            forcedTheme="dark"
+            defaultTheme="dark"
+            enableSystem={false}
             storageKey="a2g-theme"
           >
             {children}
